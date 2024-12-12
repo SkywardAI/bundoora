@@ -1,0 +1,7 @@
+name: py310
+channels:
+  - defaults
+dependencies:
+  - packaging
+  - pandas
+  - scikit-learn
