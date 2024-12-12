@@ -1,15 +1,29 @@
-# Use NVIDIA's CUDA 12.2.2 development image based on Red Hat Universal Base Image 8
-FROM nvidia/cuda:12.2.2-devel-ubi8
+# Use Ubuntu 22.04 as the base image
+FROM ubuntu:22.04
 
 # Set environment variables
-ENV PATH="/opt/conda/bin:$PATH"
+ENV DEBIAN_FRONTEND=noninteractive \
+    PATH="/opt/conda/bin:$PATH"
 
 # Install system dependencies
-RUN yum update -y && \
-    yum install -y \
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    ca-certificates \
     wget \
     bzip2 \
-    && yum clean all
+    build-essential \
+    zsh \
+    git \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install ubuntu-drivers-common
+RUN apt-get update && \
+    apt-get install -y ubuntu-drivers-common && \
+    rm -rf /var/lib/apt/lists/*
+
+# Install NVIDIA drivers
+RUN ubuntu-drivers autoinstall
 
 # Install Miniconda
 RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O /tmp/miniconda.sh && \
@@ -18,15 +32,19 @@ RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -
     /opt/conda/bin/conda clean --all -y
 
 # Create a new Conda environment with Python 3.10
-RUN conda create -y --name py310 python=3.10
+RUN /opt/conda/bin/conda create -y --name py310 python=3.10
 
-# Activate the environment and install PyTorch with CUDA 12.1 support
-RUN /bin/bash -c "source activate py310 && \
-    conda install -y pytorch==2.2.2 torchvision==0.17.2 torchaudio==2.2.2 pytorch-cuda=12.1 -c pytorch -c nvidia"
+# Install PyTorch with CUDA support using conda run
+RUN /opt/conda/bin/conda run -n py310 conda install -y pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia
 
-# Set the default environment to 'py310'
-ENV CONDA_DEFAULT_ENV=py310
-ENV PATH="/opt/conda/envs/py310/bin:$PATH"
+# Install Oh My Zsh
+RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+
+# Set Zsh as the default shell
+RUN chsh -s $(which zsh)
+
+# Ensure the Conda environment is activated by default in new zsh sessions
+RUN echo "source /opt/conda/bin/activate py310" >> /root/.zshrc
 
 # Set the working directory
 WORKDIR /workspace
@@ -34,5 +52,5 @@ WORKDIR /workspace
 # (Optional) Copy your application code into the container
 # COPY . /workspace
 
-# Set the default command to python
-CMD ["python"]
+# Set the default shell to Zsh
+CMD ["zsh"]
