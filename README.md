@@ -1,1 +1,3 @@
-# pandora
+# BUNDOORA
+
+Devcontainer for ML project.
