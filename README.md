@@ -1,6 +1,8 @@
 # BUNDOORA
 
-Devcontainer for ML project. More about how to use it see [document](.devcontainer/README.md)
+This project establishes a tailored development container environment to ensure consistent and efficient execution of machine learning projects. By encapsulating all necessary dependencies—including Python, PyTorch, CUDA, and Ubuntu 22.04—within a container, it effectively resolves compatibility issues that often arise in diverse development setups. This approach not only streamlines the research process but also enhances reproducibility and collaboration among researchers. 
+
+More about how to use it see [document](.devcontainer/README.md)
 
 
 # The environment under maintain
