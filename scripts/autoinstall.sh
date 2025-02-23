@@ -1,4 +1,7 @@
 #!/bin/bash
+
+set -e # Exit immediately if nay command fails
+
 # Update package list and remove any old Docker versions
 apt-get update -y
 for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do
