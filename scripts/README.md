@@ -1,4 +1,15 @@
-## How to use autoinstall.sh
+# Bundoora Installation Scripts
+
+This repository contains a set of shell scripts that automate the installation and configuration of NVIDIA GPU drivers and the NVIDIA Container Toolkit on Ubuntu-based systems. These scripts simplify the process of setting up your machine for GPU-accelerated applications and Docker-based workflows.
+
+
+## Install the NVIDIA GPU Driver
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/SkywardAI/bundoora/refs/heads/main/scripts/Nvidia-gpu-driver.sh | sudo -E bash -
+```
+
+## Install Docker
 
 `autoinstall.sh` will support you remove current version of docker and install the recommended version of docker for Debian/Ubuntu seriesly automatically.
 
@@ -38,4 +49,10 @@ and you are good to go
 ```bash
 ubuntu@ip-10-0-45-87:~$  docker ps -a
 CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+```
+
+## Configure the NVIDIA Container Toolkit Repository
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/SkywardAI/bundoora/refs/heads/main/scripts/Nvidia-container-tool.sh | sudo -E bash -
 ```
