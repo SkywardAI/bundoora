@@ -36,4 +36,7 @@ usermod -aG docker ubuntu
 # Apply new group membership
 newgrp docker
 
-echo "Installation complete. Please run 'newgrp docker' manually to apply your new group membership."
+echo -e "\n\e[1;33m==================== IMPORTANT ====================\e[0m"
+echo -e "\e[1;33mPlease run 'newgrp docker' manually to apply your new group membership.\e[0m"
+echo -e "\e[1;33m===================================================\e[0m\n"
+
