@@ -6,7 +6,7 @@ This repository contains a set of shell scripts that automate the installation a
 ## Install the NVIDIA GPU Driver
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/SkywardAI/bundoora/refs/heads/main/scripts/Nvidia-gpu-driver.sh | sudo -E bash -
+curl -fsSL https://raw.githubusercontent.com/SkywardAI/bundoora/refs/heads/main/scripts/nvidia-gpu-driver.sh | sudo -E bash -
 ```
 
 ## Install Docker
@@ -54,5 +54,5 @@ CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
 ## Configure the NVIDIA Container Toolkit Repository
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/SkywardAI/bundoora/refs/heads/main/scripts/Nvidia-container-tool.sh | sudo -E bash -
+curl -fsSL https://raw.githubusercontent.com/SkywardAI/bundoora/refs/heads/main/scripts/nvidia-container-tool.sh | sudo -E bash -
 ```

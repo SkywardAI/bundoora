@@ -1,6 +1,7 @@
 #!/bin/bash
 
-set -e # Exit immediately if nay command fails
+# Remove this line it will cause issue due to the execution mode.
+# set -e # Exit immediately if nay command fails
 
 # Update package list and remove any old Docker versions
 apt-get update -y
@@ -34,3 +35,5 @@ usermod -aG docker ubuntu
 
 # Apply new group membership
 newgrp docker
+
+echo "Installation complete. Please run 'newgrp docker' manually to apply your new group membership."
