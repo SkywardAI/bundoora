@@ -14,4 +14,7 @@ apt -y install ubuntu-drivers-common
 ubuntu-drivers --gpgpu install
 
 # output the author should reboot the machine
-echo "Please reboot the machine to apply the changes"
+echo -e "\n\e[1;31m===================================================\e[0m"
+echo -e "\e[1;31mPlease reboot the machine to apply the changes.\e[0m"
+echo -e "\e[1;31m===================================================\e[0m\n"
+
