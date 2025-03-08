@@ -41,7 +41,7 @@ make create-builder
 
 # Research Projects using this repo
 
-* [When Simpler Is Better: Traditional Models Outperform LLMs in ICU Mortality Prediction](https://github.com/Aisuko/multimodal-mimic)
+* [When Simpler Is Better: Traditional Models Outperform LLMs in ICU Mortality Prediction](https://github.com/Aisuko/clear)
 * [Small Language Model good at specific tasks](https://github.com/SkywardAI/ramanujan)
 * [Mimic3 Benchmark](https://github.com/Aisuko/mimic3-benchmark)
 * [ChronoScribe: Early fusion with transformer architecture](https://github.com/Aisuko/ChronoScribe)
