@@ -30,8 +30,8 @@ apt-get update -y
 apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 # Create Docker group and add 'ubuntu' user to it
-groupadd docker
-usermod -aG docker ubuntu
+groupadd docker || true
+usermod -aG docker "${SUDO_USER: -$(whoami)}"
 
 # Apply new group membership
 newgrp docker
