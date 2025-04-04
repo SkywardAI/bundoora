@@ -42,13 +42,13 @@ jobs:
         shell: bash
         run: |
           if [[ "${{ matrix.config.tag }}" == "conda" ]]; then
-            echo "SHORT_HASH=$(git rev-parse --short=7 HEAD)-conda" >> $GITHUB_ENV
+            echo "TAG=${GITHUB_REF/refs\/tags\//}-conda" >> $GITHUB_ENV
           elif [[ "${{ matrix.config.tag }}" == "latex" ]]; then
-            echo "SHORT_HASH=$(git rev-parse --short=7 HEAD)-latex" >> $GITHUB_ENV
+            echo "TAG=${GITHUB_REF/refs\/tags\//}-latex" >> $GITHUB_ENV
           elif [[ "${{ matrix.config.tag }}" == "uv" ]]; then
-            echo "SHORT_HASH=$(git rev-parse --short=7 HEAD)-uv" >> $GITHUB_ENV
+            echo "TAG=${GITHUB_REF/refs\/tags\//}-uv" >> $GITHUB_ENV
           else
-            echo "SHORT_HASH=$(git rev-parse --short=7 HEAD)" >> $GITHUB_ENV
+            echo "TAG=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
           fi
         
       - name: Push Docker image
