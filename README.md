@@ -3,6 +3,13 @@
 
 [![Building Checking 🚀](https://github.com/SkywardAI/bundoora/actions/workflows/build_and_check.yml/badge.svg)](https://github.com/SkywardAI/bundoora/actions/workflows/build_and_check.yml)
 
+[![Releasing Image 🚀](https://github.com/SkywardAI/bundoora/actions/workflows/release-image.yml/badge.svg)](https://github.com/SkywardAI/bundoora/actions/workflows/release-image.yml)
+
+[![Dependabot Updates](https://github.com/SkywardAI/bundoora/actions/workflows/dependabot/dependabot-updates/badge.svg)](https://github.com/SkywardAI/bundoora/actions/workflows/dependabot/dependabot-updates)
+
+[![Release Drafter 🚀](https://github.com/SkywardAI/bundoora/actions/workflows/release-drafter.yml/badge.svg)](https://github.com/SkywardAI/bundoora/actions/workflows/release-drafter.yml)
+
+
 This project establishes a tailored development container environment to ensure consistent and efficient execution of machine learning projects. By encapsulating all necessary dependencies—including Python, PyTorch, CUDA, and Ubuntu 22.04—within a container, it effectively resolves compatibility issues that often arise in diverse development setups. This approach not only streamlines the research process but also enhances reproducibility and collaboration among researchers. 
 
 More about how to use it see [document](.devcontainer/README.md)
