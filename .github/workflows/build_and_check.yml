@@ -15,7 +15,7 @@ jobs:
     strategy:
       matrix:
         config:
-          - { tag: "conda", dockerfile: "Dockerfile.conda", platforms: "linux/amd64,linux/arm64" }
+          - { tag: "conda", dockerfile: "Dockerfile.conda", platforms: "linux/amd64" }
           - { tag: "uv", dockerfile: "Dockerfile.uv", platforms: "linux/amd64,linux/arm64" }
           - { tag: "latex", dockerfile: "Dockerfile.latex", platforms: "linux/arm64,linux/arm64" }
 
