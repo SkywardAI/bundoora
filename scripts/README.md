@@ -11,25 +11,20 @@ curl -fsSL https://raw.githubusercontent.com/SkywardAI/bundoora/refs/heads/main/
 
 ## Install Docker
 
-`autoinstall.sh` will support you remove current version of docker and install the recommended version of docker for Debian/Ubuntu seriesly automatically.
+`install_rootless_docker.sh` will support you remove current version of docker and install the recommended version of docker for Debian/Ubuntu seriesly automatically.
 
 ### Download and execute the setup script for docker
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/SkywardAI/bundoora/refs/heads/main/scripts/autoinstall.sh |sudo -E bash -
+curl -fsSL https://raw.githubusercontent.com/SkywardAI/bundoora/refs/heads/main/scripts/install_rootless_docker.sh |sudo -E bash -
 ```
+
 The result should be
 ```
-Running kernel seems to be up-to-date.
-
-No services need to be restarted.
-
-No containers need to be restarted.
-
-No user sessions are running outdated binaries.
-
-No VM guests are running outdated hypervisor (qemu) binaries on this host.
-groupadd: group 'docker' already exists
+Docker rootless installation is complete.
+For future sessions, add the following lines to your ~/.bashrc or ~/.profile:
+export PATH="$HOME/bin:$PATH"
+export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/docker.sock"
 ```
 
 ### Permission denied
