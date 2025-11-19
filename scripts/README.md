@@ -1,53 +1,49 @@
 # Bundoora Installation Scripts
 
-This repository contains a set of shell scripts that automate the installation and configuration of NVIDIA GPU drivers and the NVIDIA Container Toolkit on Ubuntu-based systems. These scripts simplify the process of setting up your machine for GPU-accelerated applications and Docker-based workflows.
+This repository contains shell scripts that automate the installation and configuration of NVIDIA GPU drivers, Docker rootless mode, and NVIDIA Container Toolkit on Ubuntu systems. These scripts simplify the setup process for GPU-accelerated applications and containerized workflows.
 
+## Available Scripts
 
-## Install the NVIDIA GPU Driver
+| Script | Description | Ubuntu Version |
+|--------|-------------|----------------|
+| `nvidia-gpu-driver.sh` | Install NVIDIA GPU drivers | All versions |
+| `install_rootless_docker_22_04.sh` | Install Docker in rootless mode | Ubuntu 22.04 |
+| `install_rootless_docker_24_03.sh` | Install Docker in rootless mode | Ubuntu 24.04+ |
+| `nvidia-container-tool.sh` | Install NVIDIA Container Toolkit | All versions |
 
-```bash
-curl -fsSL https://raw.githubusercontent.com/SkywardAI/bundoora/refs/heads/main/scripts/nvidia-gpu-driver.sh | sudo -E bash -
-```
-
-## Install Docker
-
-`install_rootless_docker.sh` will support you remove current version of docker and install the recommended version of docker for Debian/Ubuntu seriesly automatically.
-
-### Download and execute the setup script for docker
+## Install NVIDIA GPU Driver
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/SkywardAI/bundoora/refs/heads/main/scripts/install_rootless_docker.sh |sudo -E bash -
+curl -fsSL https://raw.githubusercontent.com/SkywardAI/bundoora/refs/heads/main/scripts/nvidia-gpu-driver.sh | sudo bash
 ```
 
-The result should be
-```
-Docker rootless installation is complete.
-For future sessions, add the following lines to your ~/.bashrc or ~/.profile:
-export PATH="$HOME/bin:$PATH"
-export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/docker.sock"
-```
+**Note:** Reboot required after installation.
 
-### Permission denied
-```bash
-ubuntu@ip-10-0-45-87:~$ docker ps -a
-permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get "http://%2Fvar%2Frun%2Fdocker.sock/v1.47/containers/json?all=1": dial unix /var/run/docker.sock: connect: permission denied
-```
+## Install Docker Rootless Mode
 
-### Apply new group membership
+### Ubuntu 22.04
 
 ```bash
-newgrp docker
+curl -fsSL https://raw.githubusercontent.com/SkywardAI/bundoora/refs/heads/main/scripts/install_rootless_docker_22_04.sh | bash
 ```
 
-and you are good to go
+### Ubuntu 24.04+
 
 ```bash
-ubuntu@ip-10-0-45-87:~$  docker ps -a
-CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+curl -fsSL https://raw.githubusercontent.com/SkywardAI/bundoora/refs/heads/main/scripts/install_rootless_docker_24_03.sh | bash
 ```
 
-## Configure the NVIDIA Container Toolkit Repository
+**Important:** Run as regular user (not root). The script will use sudo when needed.
+
+## Install NVIDIA Container Toolkit
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/SkywardAI/bundoora/refs/heads/main/scripts/nvidia-container-tool.sh | sudo -E bash -
+curl -fsSL https://raw.githubusercontent.com/SkywardAI/bundoora/refs/heads/main/scripts/nvidia-container-tool.sh | sudo bash
 ```
+
+## Complete Setup Workflow
+
+1. Install NVIDIA GPU driver (requires reboot)
+2. Install Docker rootless mode (choose appropriate version)
+3. Install NVIDIA Container Toolkit
+4. Test GPU access: `docker run --rm --gpus all nvidia/cuda:12.2.2-base-ubi8 nvidia-smi`
