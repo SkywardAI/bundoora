@@ -79,7 +79,7 @@ All images include:
   </tr>
   <tr>
     <td><strong>OS</strong></td>
-    <td>AWS Ubuntu 22.04</td>
+    <td>AWS Ubuntu 24.03</td>
   </tr>
   <tr>
     <td><strong>CUDA</strong></td>
@@ -108,7 +108,9 @@ All images include:
 <ul>
   <li><a href="https://github.com/Aisuko/clear">When Simpler Is Better: Traditional Models Outperform LLMs in ICU Mortality Prediction</a></li>
   <li><a href="https://github.com/SkywardAI/ramanujan">Small Language Model good at specific tasks</a></li>
-  <li><a href="https://github.com/Aisuko/ChronoScribe">ChronoScribe: Early fusion with transformer architecture</a></li>
+  <li><a href="https://github.com/Aisuko/ChronoScribe">ChronoScribe: Early fusion with transformer architecture - PRIVATE</a></li>
+  <li><a href="https://github.com/Aisuko/rp-llm-council">LLM Council</a></li>
+  <li><a href="https://github.com/Aisuko/cv">CV - PRIVATE</a></li>
 </ul>
 
 
