@@ -23,6 +23,44 @@
 
 A tailored development container environment for consistent and efficient machine learning project execution. Encapsulates all necessary dependencies (Python, PyTorch, CUDA, Ubuntu 22.04) to resolve compatibility issues and enhance reproducibility.
 
+Includes automated installation scripts for setting up NVIDIA GPU drivers, Docker rootless mode, and NVIDIA Container Toolkit on Ubuntu systems.
+
+## 📦 Installation Scripts
+
+Quick setup scripts for Ubuntu systems:
+
+```bash
+# Install NVIDIA GPU driver (requires reboot)
+curl -fsSL https://raw.githubusercontent.com/SkywardAI/bundoora/refs/heads/main/scripts/nvidia-gpu-driver.sh | sudo bash
+
+# Install Docker rootless mode
+# For Ubuntu 22.04:
+curl -fsSL https://raw.githubusercontent.com/SkywardAI/bundoora/refs/heads/main/scripts/install_rootless_docker_22_04.sh | bash
+# For Ubuntu 24.04+:
+curl -fsSL https://raw.githubusercontent.com/SkywardAI/bundoora/refs/heads/main/scripts/install_rootless_docker_24_03.sh | bash
+
+# Install NVIDIA Container Toolkit
+curl -fsSL https://raw.githubusercontent.com/SkywardAI/bundoora/refs/heads/main/scripts/nvidia-container-tool.sh | sudo bash
+```
+
+See [scripts/README.md](scripts/README.md) for detailed instructions.
+
+## 🐳 Docker Images
+
+This repository builds three specialized container images:
+
+| Image | Description | Base | Package Manager |
+|-------|-------------|------|----------------|
+| `bundoora:conda` | ML development with Conda | Ubuntu 22.04 | Conda |
+| `bundoora:uv` | Fast Python development | Ubuntu 22.04 | uv |
+| `bundoora:latex` | LaTeX document processing | TeXLive | apt |
+
+All images include:
+- NVIDIA GPU support (CUDA 12.1)
+- Python 3.10 (conda/uv images)
+- PyTorch 2.5.1 with CUDA support
+- Zsh with Oh My Zsh
+- Git and development tools
 
 ## 🛠️ Environment Specifications
 
