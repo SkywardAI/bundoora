@@ -15,9 +15,10 @@ jobs:
     strategy:
       matrix:
         config:
-          - { tag: "conda", dockerfile: "Dockerfile.conda", platforms: "linux/amd64" }
+          # - { tag: "conda", dockerfile: "Dockerfile.conda", platforms: "linux/amd64" }
           - { tag: "uv", dockerfile: "Dockerfile.uv", platforms: "linux/amd64,linux/arm64" }
-          - { tag: "latex", dockerfile: "Dockerfile.latex", platforms: "linux/arm64,linux/arm64" }
+          - { tag: "pytorch", dockerfile: "Dockerfile.pytorch", platforms: "linux/amd64" }
+          # - { tag: "latex", dockerfile: "Dockerfile.latex", platforms: "linux/arm64,linux/arm64" }
 
     runs-on: ubuntu-latest
     steps:
@@ -57,6 +58,8 @@ jobs:
             echo "SHORT_HASH=$(git rev-parse --short=7 HEAD)-latex" >> $GITHUB_ENV
           elif [[ "${{ matrix.config.tag }}" == "uv" ]]; then
             echo "SHORT_HASH=$(git rev-parse --short=7 HEAD)-uv" >> $GITHUB_ENV
+          elif [[ "${{ matrix.config.tag }}" == "pytorch" ]]; then
+            echo "SHORT_HASH=$(git rev-parse --short=7 HEAD)-pytorch" >> $GITHUB_ENV
           else
             echo "SHORT_HASH=$(git rev-parse --short=7 HEAD)" >> $GITHUB_ENV
           fi

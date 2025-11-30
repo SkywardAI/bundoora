@@ -47,20 +47,21 @@ See [scripts/README.md](scripts/README.md) for detailed instructions.
 
 ## 🐳 Docker Images
 
-This repository builds three specialized container images:
+This repository builds specialized container images for Python development:
 
 | Image | Description | Base | Package Manager |
 |-------|-------------|------|----------------|
-| `bundoora:conda` | ML development with Conda | Ubuntu 22.04 | Conda |
 | `bundoora:uv` | Fast Python development | Ubuntu 22.04 | uv |
-| `bundoora:latex` | LaTeX document processing | TeXLive | apt |
+| `bundoora:pytorch` | NVIDIA PyTorch with flash-attention2 | NVIDIA PyTorch 25.10 | pip |
 
-All images include:
-- NVIDIA GPU support (CUDA 12.1)
-- Python 3.10 (conda/uv images)
-- PyTorch 2.5.1 with CUDA support
+The images include:
+- NVIDIA GPU support with CUDA
+- Python 3.x
+- PyTorch with CUDA support
 - Zsh with Oh My Zsh
 - Git and development tools
+
+**Note:** The uv image is based on Ubuntu 22.04 but runs seamlessly on Ubuntu 24.03 host systems. The pytorch image includes flash-attention2 support.
 
 ## 🛠️ Environment Specifications
 
