@@ -9,8 +9,19 @@ categories:
     labels:
       - 'bugfix'
   - title: '🧰 Maintenance'
-    label: 'CI'
+    labels:
+      - 'CI'
+      - 'maintenance'
+  - title: '📚 Documentation'
+    labels:
+      - 'documentation'
+      - 'docs'
+  - title: '🔧 Other Changes'
+    labels:
+      - '*'
+include-pre-releases: false
 change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
+no-changes-template: '- No changes in this release'
 version-resolver:
   major:
     labels:
